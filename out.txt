@@ -1,0 +1,163 @@
+Token: Operator, Lexeme: #
+	<Syntax_ana>::=  # <Opt Function Definition> # <Opt Declaration List> <FSM_STATment List> #
+	<Opt Function Definition>::=  <Function Definition> | <Empty>
+	<Function Definition>::=  <Function> | <Function> <Function Definition>
+	<Function>::=  function <Identifier> (<Opt Parameter List>) <Opt Declaration List> <Body>
+Token: Keyword, Lexeme: function
+Token: Identifier, Lexeme: convert
+Token: Separator, Lexeme: (
+	<Opt Parameter List>::=  <Parameter List> | <Empty>
+	<Parameter List>::=  <Parameter> | <Parameter> , <Parameter List> 
+	<Parameter>::=  <IDs> : <Qualifier>
+	<IDs>::=  <Identifier> | <Identifier>, <IDs>
+Token: Operator, Lexeme: :
+Token: Keyword, Lexeme: int
+	<Qualifier>::=  int
+Token: Separator, Lexeme: )
+Token: Separator, Lexeme: {
+	<Opt Declaration List>::=  <Declaration List> | <Empty>
+	<Empty>::=  epsilon
+	<Body>::=  { <FSM_STATment List> }
+Token: Keyword, Lexeme: return
+	<FSM_STATment>::=  <Return>
+	<Return>::=  return ; | return <Expression>;
+Token: Keyword, Lexeme: return
+Token: Integer, Lexeme: 5
+	<Expression>::=  <Term> <Expression_Prime>
+	<Term>::=  <Factor> <Term_Prime>
+	<Factor>::=  <Identifier>
+	<Primary>::=  <Integer>
+	<Term_Prime>::=  *<Factor><Term_Prime>
+Token: Separator, Lexeme: (
+	<Factor>::=  <Identifier>
+	<Primary>::=  ( <Expression> )
+Token: Identifier, Lexeme: fahr
+	<Expression>::=  <Term> <Expression_Prime>
+	<Term>::=  <Factor> <Term_Prime>
+	<Factor>::=  <Identifier>
+	<Primary>::=  <Identifier>
+Token: Operator, Lexeme: -
+	<Term Prime>::=  epsilon
+	<Expression_Prime>::=  -<Term><Expression_Prime>
+Token: Integer, Lexeme: 32
+	<Term>::=  <Factor> <Term_Prime>
+	<Factor>::=  <Identifier>
+	<Primary>::=  <Integer>
+	<Term Prime>::=  epsilon
+	<Expression Prime>::=  epsilon
+Token: Separator, Lexeme: )
+Token: Operator, Lexeme: /
+	<Term_Prime>::=  /<Factor><Term_Prime>
+Token: Integer, Lexeme: 9
+	<Factor>::=  <Identifier>
+	<Primary>::=  <Integer>
+	<Term Prime>::=  epsilon
+	<Term Prime>::=  epsilon
+	<Expression Prime>::=  epsilon
+Token: Separator, Lexeme: ;
+Token: Separator, Lexeme: }
+Token: Operator, Lexeme: #
+	<Opt Declaration List>::=  <Declaration List> | <Empty>
+	<Declarations List> ::=  <Declaration>; | <Declaration>; < Declaration List>
+	<Declaration>::=  <Qualifier> <IDs>
+	<Qualifier>::=  int
+Token: Identifier, Lexeme: low
+	<IDs>::=  <Identifier> | <Identifier>, <IDs>
+Token: Separator, Lexeme: ,
+Token: Identifier, Lexeme: high
+	<IDs>::=  <Identifier> | <Identifier>, <IDs>
+Token: Separator, Lexeme: ,
+Token: Identifier, Lexeme: step
+	<IDs>::=  <Identifier> | <Identifier>, <IDs>
+Token: Keyword, Lexeme: scan
+Token: Keyword, Lexeme: scan
+	<FSM_STATment>::=  <Read>
+	<Read>::=  scan ( <IDs> );
+Token: Separator, Lexeme: (
+Token: Identifier, Lexeme: low
+	<IDs>::=  <Identifier> | <Identifier>, <IDs>
+Token: Separator, Lexeme: ,
+Token: Identifier, Lexeme: high
+	<IDs>::=  <Identifier> | <Identifier>, <IDs>
+Token: Separator, Lexeme: ,
+Token: Identifier, Lexeme: step
+	<IDs>::=  <Identifier> | <Identifier>, <IDs>
+Token: Separator, Lexeme: )
+Token: Separator, Lexeme: ;
+Token: Keyword, Lexeme: while
+	<FSM_STATment>::=  <While>
+	<While>::=  while ( <Condition> ) <FSM_STATment>
+Token: Separator, Lexeme: (
+	<Condition>::=  <Expression> <Relop> <Expression>
+Token: Identifier, Lexeme: low
+	<Expression>::=  <Term> <Expression_Prime>
+	<Term>::=  <Factor> <Term_Prime>
+	<Factor>::=  <Identifier>
+	<Primary>::=  <Identifier>
+Token: Operator, Lexeme: <
+	<Term Prime>::=  epsilon
+	<Expression Prime>::=  epsilon
+	<Relop>::=  = | /= | > | < | <= | =>
+	<Relop>::=  <
+Token: Operator, Lexeme: <
+Token: Identifier, Lexeme: high
+	<Expression>::=  <Term> <Expression_Prime>
+	<Term>::=  <Factor> <Term_Prime>
+	<Factor>::=  <Identifier>
+	<Primary>::=  <Identifier>
+Token: Separator, Lexeme: )
+	<Term Prime>::=  epsilon
+	<Expression Prime>::=  epsilon
+Token: Separator, Lexeme: )
+	<FSM_STATment>::=  <Compound>
+	<Compound>::=  { <FSM_STATment List> }
+Token: Keyword, Lexeme: print
+	<FSM_STATment>::=  <Write>
+	<Write>::=  print ( <Expression> );
+Token: Separator, Lexeme: (
+Token: Identifier, Lexeme: low
+	<Expression>::=  <Term> <Expression_Prime>
+	<Term>::=  <Factor> <Term_Prime>
+	<Factor>::=  <Identifier>
+	<Primary>::=  <Identifier>
+Token: Separator, Lexeme: )
+	<Term Prime>::=  epsilon
+	<Expression Prime>::=  epsilon
+Token: Separator, Lexeme: )
+Token: Separator, Lexeme: ;
+Token: Keyword, Lexeme: write
+	<FSM_STATment>::=  <write>
+	<Write>::=  print ( <Expression> );
+Token: Separator, Lexeme: (
+Token: Identifier, Lexeme: convert
+	<Expression>::=  <Term> <Expression_Prime>
+	<Term>::=  <Factor> <Term_Prime>
+	<Factor>::=  <Identifier>
+	<Primary>::=  <Identifier>
+Token: Separator, Lexeme: [
+	<Primary>::=  <Identifier> [<IDs>]
+Token: Identifier, Lexeme: low
+	<IDs>::=  <Identifier> | <Identifier>, <IDs>
+Token: Separator, Lexeme: ]
+Token: Separator, Lexeme: )
+	<IDs>::=  <Identifier> | <Identifier>, <IDs>
+Token: Identifier, Lexeme: low
+	<Term Prime>::=  epsilon
+	<Expression Prime>::=  epsilon
+Token: Identifier, Lexeme: low
+Token: Operator, Lexeme: :=
+Token: Identifier, Lexeme: low
+	<FSM_STATment>::=  <Assign>
+	<Assign>::=  <Identifier> := <Expression>;
+Token: Operator, Lexeme: +
+Token: Identifier, Lexeme: step
+	<Expression>::=  <Term> <Expression_Prime>
+	<Term>::=  <Factor> <Term_Prime>
+	<Factor>::=  <Identifier>
+	<Primary>::=  <Identifier>
+Token: Separator, Lexeme: ;
+	<Term Prime>::=  epsilon
+	<Expression Prime>::=  epsilon
+Token: Separator, Lexeme: }
+Token: Separator, Lexeme: }
+Token: Operator, Lexeme: #

@@ -1,0 +1,17 @@
+#
+function convert (fahr:int)
+{
+           return 5*(fahr -32)/9;
+}
+
+#
+     int    low, high, step;
+
+     scan (low, high, step);
+     while (low < high)  
+           {  
+             print (low);
+             write (convert [low]);
+             low := low + step;
+            }
+#
